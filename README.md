@@ -1,5 +1,5 @@
-![](Img/Cabecera_Logo.png)
-![](Img/logo.png)
+![](img/Cabecera_Logo.png)
+![](img/logo.png)
 
 # Gradle
 
