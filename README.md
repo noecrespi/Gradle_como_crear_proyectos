@@ -191,6 +191,52 @@ Se creará un proyecto entero con sus carpetas y archivos correspondientes.
         4. **Seleccionar** que **_test_** sea _Test_ .
         5. **Clicar** en **_Apply_** .
         6. **Clicar** en **_OK_** .
+       
+    - **Abrir** el archivo **_build.gradle_**, **copiar** el lo siginente y **añadir** en el archivo.
+        1. Cambiar nombre `description = 'cotxox'` y poner el nombre de la app.
+
+            ```
+                plugins {
+                id 'java'
+                id 'application'
+            }
+
+            repositories {
+                mavenLocal()
+            }
+
+            group 'org.mollapp'
+            version '1.0-SNAPSHOT'
+            description = 'cotxox'
+
+            repositories {
+                mavenCentral()
+            }
+
+            dependencies {
+                testImplementation 'junit:junit:4.12'
+                testImplementation 'org.hamcrest:hamcrest-all:1.3'
+            }
+
+            test {
+                useJUnitPlatform()
+            }
+
+            java {
+                sourceCompatibility = JavaVersion.VERSION_11
+                targetCompatibility = JavaVersion.VERSION_11
+            }
+
+            application {
+                mainClassName = 'poniperro.App'
+            }
+
+            jar {
+                manifest {
+                    attributes 'Main-Class' : 'poniperro.App'
+                }
+            } 
+            ```
 
 
 ### ¿Cómo subir los cabios que voy haciendo a GitHub?
