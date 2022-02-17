@@ -197,45 +197,46 @@ Se creará un proyecto entero con sus carpetas y archivos correspondientes.
 
             ```
                 plugins {
-                id 'java'
-                id 'application'
-            }
-
-            repositories {
-                mavenLocal()
-            }
-
-            group 'org.mollapp'
-            version '1.0-SNAPSHOT'
-            description = 'cotxox'
-
-            repositories {
-                mavenCentral()
-            }
-
-            dependencies {
-                testImplementation 'junit:junit:4.12'
-                testImplementation 'org.hamcrest:hamcrest-all:1.3'
-            }
-
-            test {
-                useJUnitPlatform()
-            }
-
-            java {
-                sourceCompatibility = JavaVersion.VERSION_11
-                targetCompatibility = JavaVersion.VERSION_11
-            }
-
-            application {
-                mainClassName = 'poniperro.App'
-            }
-
-            jar {
-                manifest {
-                    attributes 'Main-Class' : 'poniperro.App'
+                    id 'java'
+                    id 'jacoco'
                 }
-            } 
+
+                repositories {
+                    mavenLocal()
+                }
+
+                group 'org.cotxox'
+                version '1.0-SNAPSHOT'
+
+                repositories {
+                    mavenCentral()
+                }
+
+                dependencies {
+                    testImplementation 'junit:junit:4.13.2'
+                    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+                }
+
+                test {
+                    useJUnitPlatform()
+                    finalizedBy jacocoTestReport
+                }
+
+                jacocoTestReport {
+                    dependsOn test // tests are required to run before generating the report
+                }
+
+                java {
+                    sourceCompatibility = JavaVersion.VERSION_11
+                    targetCompatibility = JavaVersion.VERSION_11
+                }
+
+                jar {
+                    manifest {
+                    attributes 'Main-Class' : 'edu.poniperro.cotxox'
+                    }
+                }
+ 
             ```
 
 
